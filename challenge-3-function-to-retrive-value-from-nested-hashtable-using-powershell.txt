@@ -1,0 +1,20 @@
+Challenge 3
+
+# using this powershell function we can value from nested hashtable.
+# we can provide the hashtable with nested key vault pair and 
+#then run the function with spcific key , we will get "value" as output  
+
+function GetNestedKeyValue {
+    param (
+        [hashTable] $hashTable,
+        [string] $key
+    )
+    $hashTable.GetEnumerator() | ForEach-Object {
+        if ($_.Key -eq $key) {
+            Write-Output $_.Value
+        }
+        elseif ($_.Value -is [hashTable]) {
+            Get-ValueByKey $_.Value $key
+        }
+    }
+}

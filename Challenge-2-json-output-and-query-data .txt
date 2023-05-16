@@ -1,0 +1,20 @@
+Challenge 2
+
+# in order to get details of any Azure object , we can use Azure CLI.
+# With Azure CLI , we can get the output in JSON as well as in YAML formay .
+
+# For example , to get details of all VMs in Azure , from a perticular subscription , we can use : 
+
+az vm list --output JSON
+
+# to get the value of specific key from this json output , we can use :- 
+
+az vm list --query "name" 
+# this will list name of all VMs 
+
+# to get adminusername of a specific VM , we can use :- 
+
+az vm show -g myrg -n testvm --query "osProfile.adminusername"
+
+==========================================================
+
